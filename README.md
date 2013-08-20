@@ -31,6 +31,7 @@ db.disconnect();
 Configuration
 -------------
 
+  - `shouldDropSync` - permission to drop collections and indexes
   - `maxBatchSize` - maximum batch size used for retrieving large sets of documents
   - `isCapped` - collection should be capped
   - `maxSize` - maximum size of collection in bytes
@@ -42,6 +43,7 @@ Configuration
 ```
 <config> = {
   <collection name> : {
+    dropSync          : <shouldDropSync>,
     batchSize         : <maxBatchSize>,
     create            : {
       capped            : <isCapped>,
