@@ -42,7 +42,7 @@ Configuration
 
 ```
 <config> = {
-  uri: <uri>,
+  uri              : <uri>,
   <collection name>: {
     dropSync         : <shouldDropSync>,
     batchSize        : <maxBatchSize>,
