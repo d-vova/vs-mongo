@@ -37,7 +37,7 @@ Configuration
   - `maxSize` - maximum size of collection in bytes
   - `maxDocCount` - maximum number of documents in collection
   - `shouldAutoIndexId` - auto-populate and index `_id` field
-  - `index` - fields and orders used for indexing
+  - `keys` - fields and orders used for indexing
   - `options` - options used for indexing
 
 ```
@@ -52,7 +52,7 @@ Configuration
       autoIndexId       : <shouldAutoIndexId>
     },
     indexes           : [
-      [ <index>, <options> ]
+      [ <keys>, <options> ]
     ]
   }
 }
