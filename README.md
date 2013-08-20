@@ -30,6 +30,7 @@ db.disconnect();
 Configuration
 -------------
 
+  * `uri` - MongoDB connection string/uri
   * `dropSync` - allow to drop collection when does not match configuration
   * `maxBatchSize` - maximum batch size used for retrieving large sets of documents
   * `isCapped` - collection should be capped
@@ -41,6 +42,7 @@ Configuration
 
 ```
 <config> = {
+  uri: <uri>,
   <collection name>: {
     dropSync         : <shouldDropSync>,
     batchSize        : <maxBatchSize>,
