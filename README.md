@@ -18,10 +18,11 @@ Quick Start
 ```
 var mongo = require('vs-mongo');
 
+var uri = 'mongodb://localhost/sandbox';
 var config = {
 }
 
-var db = mongo.connect(config);
+var db = mongo.connect(uri, config);
 
 db.disconnect();
 ```
@@ -30,7 +31,6 @@ db.disconnect();
 Configuration
 -------------
 
-  * `uri` - MongoDB connection string/uri
   * `dropSync` - allow to drop collection when does not match configuration
   * `maxBatchSize` - maximum batch size used for retrieving large sets of documents
   * `isCapped` - collection should be capped
@@ -42,17 +42,16 @@ Configuration
 
 ```
 <config> = {
-  uri              : <uri>,
-  <collection name>: {
-    dropSync         : <shouldDropSync>,
-    batchSize        : <maxBatchSize>,
-    create           : {
-      capped           : <isCapped>,
-      size             : <maxSize>,
-      max              : <maxDocCount>,
-      autoIndexId      : <shouldAutoIndexId>
+  <collection name> : {
+    dropSync          : <shouldDropSync>,
+    batchSize         : <maxBatchSize>,
+    create            : {
+      capped            : <isCapped>,
+      size              : <maxSize>,
+      max               : <maxDocCount>,
+      autoIndexId       : <shouldAutoIndexId>
     },
-    indexes          : [
+    indexes           : [
       [ <index>, <options> ]
     ]
   }
