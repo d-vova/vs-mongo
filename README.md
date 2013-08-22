@@ -78,7 +78,9 @@ var config = { users: { dropSync: true } }
 var db = mongo.connect(uri, config);
 
 var names = [ 'Bill', 'Jill', 'Phil', 'Will' ];
-var users = names.map(function ( name ) { return db.users.create({ name: name }); });
+var users = names.map(function ( name ) {
+  return db.users.create({ name: name });
+});
 ```
 
 
@@ -118,9 +120,9 @@ db.users.remove(users, function ( error, value ) {
 ```
 
 
-#### FindOne ####
+#### Find One ####
 
-Find a single document
+Find first matching document
 
 ```javascript
 var query = { name: /^.ill$/ }, options = { }
@@ -132,9 +134,9 @@ db.users.findOne(query, options, function ( error, value ) {
 ```
 
 
-#### FindOne ####
+#### Find All ####
 
-Find a all matching documents (the result is limited by `batchSize`)
+Find all matching documents (the result is limited by `batchSize`)
 
 ```javascript
 var query = { name: /^.ill$/ }, options = { }
@@ -148,6 +150,48 @@ db.users.findAll(query, options, function ( error, value ) {
       console.log('user' + i + ' - ' + String(value[i]));
     }
   }
+});
+```
+
+
+#### Count ####
+
+Counting matching documents
+
+```javascript
+var query = { name: /^.ill$/ }
+
+db.users.count(query, function ( error, value ) {
+  if ( error ) console.log('error occured while counting users: ' + error);
+  else console.log('users have been successfully counted: ' + String(value));
+});
+```
+
+
+#### Remove One ####
+
+Remove first matching document
+
+```javascript
+var query = { name: /^.ill$/ }
+
+db.users.removeOne(query, function ( error, value ) {
+  if ( error ) console.log('error occured while removing user: ' + error);
+  else console.log('successfully removed user: ' + String(value));
+});
+```
+
+
+#### Remove All ####
+
+Remove all matching documents
+
+```javascript
+var query = { name: /^.ill$/ }
+
+db.users.removeAll(query, function ( error, value ) {
+  if ( error ) console.log('error occured while removing users: ' + error);
+  else console.log('successfully removed users: ' + String(value));
 });
 ```
 
