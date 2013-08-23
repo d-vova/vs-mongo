@@ -196,6 +196,38 @@ db.users.removeAll(query, function ( error, value ) {
 ```
 
 
+Extend
+------
+
+When extending a class, collection functionality is transferred to the class,
+and all retrieved documents are passed to the class constructor
+
+```javascript
+var mongo = require('vs-mongo');
+
+var uri = 'mongodb://localhost/sandbox';
+var config = { users: { dropSync: true } }
+
+var db = mongo.connect(uri, config);
+
+var User = function User ( doc ) {
+  db.users.create(doc, this);
+}
+
+db.users.extend(User);
+
+var names = [ 'Bill', 'Jill', 'Phil', 'Will' ];
+var users = names.map(function ( name ) {
+  return new User({ name: name });
+});
+
+User.save(users, function ( error, value ) {
+  if ( error ) console.log('error occured while saving users: ' + error);
+  else console.log('users have been successfully saved');
+});
+```
+
+
 Logging
 -------
 
