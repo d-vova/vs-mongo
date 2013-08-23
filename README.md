@@ -90,7 +90,7 @@ Saving one or multiple documents
 
 ```javascript
 db.users.save(users, function ( error, value ) {
-  if ( error ) console.log('error occured while saving users: ' + error);
+  if ( error ) console.log('error occurred while saving users: ' + error);
   else console.log('users have been successfully saved');
 });
 ```
@@ -102,7 +102,7 @@ Refreshing one or multiple documents
 
 ```javascript
 db.users.refresh(users, function ( error, value ) {
-  if ( error ) console.log('error occured while refreshing users: ' + error);
+  if ( error ) console.log('error occurred while refreshing users: ' + error);
   else console.log('users have been successfully refreshed');
 });
 ```
@@ -114,7 +114,7 @@ Removing one or multiple documents
 
 ```javascript
 db.users.remove(users, function ( error, value ) {
-  if ( error ) console.log('error occured while removing users: ' + error);
+  if ( error ) console.log('error occurred while removing users: ' + error);
   else console.log('users have been successfully removed');
 });
 ```
@@ -128,7 +128,7 @@ Find first matching document
 var query = { name: /^.ill$/ }, options = { }
 
 db.users.findOne(query, options, function ( error, value ) {
-  if ( error ) console.log('error occured while looking for user: ' + error);
+  if ( error ) console.log('error occurred while looking for user: ' + error);
   else console.log('successfully found user: ' + String(value));
 });
 ```
@@ -142,7 +142,7 @@ Find all matching documents (the result is limited by `batchSize`)
 var query = { name: /^.ill$/ }, options = { }
 
 db.users.findAll(query, options, function ( error, value ) {
-  if ( error ) console.log('error occured while looking for users: ' + error);
+  if ( error ) console.log('error occurred while looking for users: ' + error);
   else {
     console.log('successfully found users:');
     
@@ -162,7 +162,7 @@ Counting matching documents
 var query = { name: /^.ill$/ }
 
 db.users.count(query, function ( error, value ) {
-  if ( error ) console.log('error occured while counting users: ' + error);
+  if ( error ) console.log('error occurred while counting users: ' + error);
   else console.log('users have been successfully counted: ' + String(value));
 });
 ```
@@ -176,7 +176,7 @@ Remove first matching document
 var query = { name: /^.ill$/ }
 
 db.users.removeOne(query, function ( error, value ) {
-  if ( error ) console.log('error occured while removing user: ' + error);
+  if ( error ) console.log('error occurred while removing user: ' + error);
   else console.log('successfully removed user: ' + String(value));
 });
 ```
@@ -190,9 +190,59 @@ Remove all matching documents
 var query = { name: /^.ill$/ }
 
 db.users.removeAll(query, function ( error, value ) {
-  if ( error ) console.log('error occured while removing users: ' + error);
+  if ( error ) console.log('error occurred while removing users: ' + error);
   else console.log('successfully removed users: ' + String(value));
 });
+```
+
+
+Document
+--------
+
+Objects return by collection methods are wrappers around raw documents retrieved from the database.
+
+These wrappers provide additional functionality that should make developer's life easier
+
+
+#### Save ####
+
+Save can easily be chained to the end of document creation
+
+```javascript
+var callback = function callback ( error, value ) {
+  if ( error ) console.log('error occurred while saving user: ' + error);
+  else console.log('user have been successfully saved');
+}
+
+var user = db.users.create({ name: 'Joe' }).save(callback);
+```
+
+
+#### Refresh ####
+
+Refresh helps to make sure the underlying document is up-to-date
+
+```javascript
+var callback = function callback ( error, value ) {
+  if ( error ) console.log('error occurred while refreshing user: ' + error);
+  else console.log('user have been successfully refreshed');
+}
+
+user.refresh(callback);
+```
+
+
+#### Remove ####
+
+Remove can be called directly on the object
+
+```javascript
+var callback = function callback ( error, value ) {
+  if ( error ) console.log('error occurred while removing user: ' + error);
+  else console.log('user have been successfully removed');
+}
+
+user.remove(callback);
 ```
 
 
@@ -222,7 +272,7 @@ var users = names.map(function ( name ) {
 });
 
 User.save(users, function ( error, value ) {
-  if ( error ) console.log('error occured while saving users: ' + error);
+  if ( error ) console.log('error occurred while saving users: ' + error);
   else console.log('users have been successfully saved');
 });
 ```
