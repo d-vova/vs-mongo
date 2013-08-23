@@ -154,6 +154,26 @@ db.users.findAll(query, options, function ( error, value ) {
 ```
 
 
+#### Stream ####
+
+Streaming is used for retrieving large amounts of documents in batches
+
+```javascript
+var query = { name: /^.ill$/ }, options = { }
+
+var onBatch = function onBatch ( users ) {
+  console.log('successfully retrieved a batch of users');
+}
+
+var callback = function callback ( error, value ) {
+  if ( error ) console.log('error occurred while retrieving users: ' + error);
+  else console.log('successfully retrieved all user');
+}
+
+db.users.stream(query, options, onBatch, callback);
+```
+
+
 #### Count ####
 
 Counting matching documents
