@@ -1,0 +1,28 @@
+{
+  "name": "vs-mongo",
+  "version": "0.0.0",
+  "description": "Thin wrapper around native MongoDB driver for NodeJS",
+  "main": "vs-mongo.js",
+  "scripts": {
+    "test": "node vs-mongo.js test",
+    "start": "node vs-mongo.js"
+  },
+  "dependencies": {
+    "vs-bond": "*",
+    "mongodb": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/d-vova/vs-mongo.git"
+  },
+  "keywords": [
+    "db",
+    "mongo"
+  ],
+  "author": "Vladimir Darmin",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
