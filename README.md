@@ -188,6 +188,34 @@ db.users.count(query, function ( error, value ) {
 ```
 
 
+#### Upsert One ####
+
+Upsert first matching document
+
+```javascript
+var query = { name: /^.ill$/ }, doc = { $set: { age: 123 } }
+
+db.users.upsertOne(query, doc, function ( error, value ) {
+  if ( error ) console.log('error occurred while upserting user: ' + error);
+  else console.log('successfully upserted user');
+});
+```
+
+
+#### Upsert All ####
+
+Upsert all matching documents
+
+```javascript
+var query = { name: /^.ill$/ }, doc = { $set: { age: 123 } }
+
+db.users.upsertAll(query, doc, function ( error, value ) {
+  if ( error ) console.log('error occurred while upserting users: ' + error);
+  else console.log('successfully upserted users');
+});
+```
+
+
 #### Remove One ####
 
 Remove first matching document
