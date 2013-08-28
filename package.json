@@ -1,6 +1,6 @@
 {
   "name": "vs-mongo",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Thin wrapper around native MongoDB driver for NodeJS",
   "main": "vs-mongo.js",
   "scripts": {
