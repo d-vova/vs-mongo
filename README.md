@@ -188,6 +188,34 @@ db.users.count(query, function ( error, value ) {
 ```
 
 
+#### Update One ####
+
+Update first matching document
+
+```javascript
+var query = { name: /^.ill$/ }, doc = { $set: { age: 123 } }
+
+db.users.updateOne(query, doc, function ( error, value ) {
+  if ( error ) console.log('error occurred while updating user: ' + error);
+  else console.log('successfully updated user');
+});
+```
+
+
+#### Update All ####
+
+Update all matching documents
+
+```javascript
+var query = { name: /^.ill$/ }, doc = { $set: { age: 123 } }
+
+db.users.updateAll(query, doc, function ( error, value ) {
+  if ( error ) console.log('error occurred while updating users: ' + error);
+  else console.log('successfully updated users');
+});
+```
+
+
 #### Upsert One ####
 
 Upsert first matching document
